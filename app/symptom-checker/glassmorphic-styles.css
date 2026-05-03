@@ -1,0 +1,2109 @@
+/* Glassmorphic Symptom Checker Styles */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
+/* Canvas Background - Light, Air, and Nature */
+.symptom-checker-canvas {
+  min-height: 100vh;
+  background: linear-gradient(180deg, 
+    #f0f7ff 0%,     /* Soft pale blue */
+    #fef9f3 100%    /* Gentle warm cream */
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.symptom-checker-canvas::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(240, 247, 255, 0.4) 0%, transparent 50%);
+  background-size: 100px 100px, 150px 150px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.symptom-checker-canvas::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f8fafc' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+/* Frosted Glass Main Container */
+.glassmorphic-container {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 24px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 4px 16px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+.glassmorphic-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.8), 
+    transparent
+  );
+}
+
+/* Secondary Glass Panels */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Typography System */
+.symptom-typography {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.section-header {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f766e; /* Dark teal */
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-header-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #0f766e;
+  stroke-width: 2.5;
+}
+
+.main-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f766e;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.main-title-icon {
+  width: 2rem;
+  height: 2rem;
+  color: #0f766e;
+  stroke-width: 2;
+}
+
+.body-text {
+  font-family: 'Nunito', sans-serif;
+  color: #333333;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.subtitle-text {
+  font-family: 'Nunito', sans-serif;
+  color: #666666;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Symptom Selection Pills */
+.symptom-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 50px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.symptom-pill:not(.selected) {
+  background: rgba(248, 250, 252, 0.7);
+  backdrop-filter: blur(8px);
+  color: #475569;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.symptom-pill:not(.selected):hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.symptom-pill.selected {
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  color: white;
+  box-shadow: 
+    0 4px 16px rgba(13, 148, 136, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.symptom-pill.selected::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    transparent 50%, 
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  pointer-events: none;
+}
+
+.checkmark-icon {
+  width: 1rem;
+  height: 1rem;
+  stroke-width: 3;
+}
+
+/* Severity Selection Buttons */
+.severity-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.severity-button {
+  flex: 1;
+  min-width: 100px;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  position: relative;
+  text-align: center;
+}
+
+.severity-button.mild:not(.selected) {
+  background: rgba(34, 197, 94, 0.1);
+  color: #15803d;
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+.severity-button.mild.selected {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: white;
+  box-shadow: 
+    0 4px 16px rgba(34, 197, 94, 0.3),
+    0 0 0 4px rgba(34, 197, 94, 0.1);
+}
+
+.severity-button.moderate:not(.selected) {
+  background: rgba(234, 179, 8, 0.1);
+  color: #a16207;
+  border-color: rgba(234, 179, 8, 0.2);
+}
+
+.severity-button.moderate.selected {
+  background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+  color: white;
+  box-shadow: 
+    0 4px 16px rgba(234, 179, 8, 0.3),
+    0 0 0 4px rgba(234, 179, 8, 0.1);
+}
+
+.severity-button.severe:not(.selected) {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.severity-button.severe.selected {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  box-shadow: 
+    0 4px 16px rgba(239, 68, 68, 0.3),
+    0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+/* Progress Indicator Circles */
+.progress-circles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.progress-circle {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border: 2px solid transparent;
+}
+
+.progress-circle.completed {
+  background: linear-gradient(135deg, #0d9488 0%, #22c55e 100%);
+  color: white;
+  box-shadow: 
+    0 4px 16px rgba(13, 148, 136, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.progress-circle.active {
+  background: rgba(13, 148, 136, 0.1);
+  color: #0d9488;
+  border-color: #0d9488;
+  animation: pulse-glow 2s infinite;
+}
+
+.progress-circle.inactive {
+  background: rgba(148, 163, 184, 0.1);
+  color: #94a3b8;
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(13, 148, 136, 0.1);
+  }
+}
+
+.progress-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.875rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.progress-label.completed,
+.progress-label.active {
+  font-weight: 700;
+  color: #0d9488;
+}
+
+.progress-label.inactive {
+  font-weight: 500;
+  color: #94a3b8;
+}
+
+/* Language Selector Enhancement - Vivid Purple Design */
+.language-selector {
+  background: linear-gradient(135deg, rgba(139, 69, 255, 0.15) 0%, rgba(168, 85, 247, 0.25) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 69, 255, 0.4);
+  border-radius: 12px;
+  box-shadow: 
+    0 4px 16px rgba(139, 69, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  color: #6b46c1;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.language-selector:hover {
+  background: linear-gradient(135deg, rgba(139, 69, 255, 0.25) 0%, rgba(168, 85, 247, 0.35) 100%);
+  border-color: rgba(139, 69, 255, 0.6);
+  box-shadow: 
+    0 6px 20px rgba(139, 69, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Navigation Buttons */
+.nav-button {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+}
+
+.nav-button.primary {
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  color: white;
+  border: none;
+  box-shadow: 
+    0 4px 16px rgba(13, 148, 136, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.nav-button.primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 20px rgba(13, 148, 136, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.nav-button.secondary {
+  background: rgba(255, 255, 255, 0.7);
+  color: #475569;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.nav-button.secondary:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Form Input Enhancements */
+.glass-input {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  font-family: 'Nunito', sans-serif;
+  color: #333333;
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: #0d9488;
+  box-shadow: 
+    0 0 0 4px rgba(13, 148, 136, 0.1),
+    0 4px 12px rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+
+/* Category Grid */
+.symptom-category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.symptom-pills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 1.75rem;
+  }
+  
+  .section-header {
+    font-size: 1.125rem;
+  }
+  
+  .progress-circles {
+    gap: 1rem;
+  }
+  
+  .progress-circle {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .symptom-pills-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .severity-buttons {
+    flex-direction: column;
+  }
+  
+  .severity-button {
+    min-width: auto;
+  }
+}
+
+/* Enhanced Loading States */
+.analyzing-state {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px) saturate(180%);
+  border-radius: 24px;
+  padding: 4rem 3rem;
+  text-align: center;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.analyzing-state::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(13, 148, 136, 0.1),
+    transparent
+  );
+  animation: shimmer-loading 2s infinite;
+}
+
+@keyframes shimmer-loading {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.medical-spinner {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 2rem;
+  position: relative;
+}
+
+.spinner {
+  width: 4rem;
+  height: 4rem;
+  border: 4px solid rgba(13, 148, 136, 0.1);
+  border-radius: 50%;
+  position: relative;
+  animation: pulse-ring 2s infinite ease-in-out;
+}
+
+.spinner::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  border: 3px solid transparent;
+  border-top: 3px solid #0d9488;
+  border-right: 3px solid #14b8a6;
+  border-radius: 50%;
+  animation: spin-medical 1.5s linear infinite;
+}
+
+.spinner::after {
+  content: '🩺';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  animation: heart-beat 1.5s ease-in-out infinite;
+}
+
+@keyframes spin-medical {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-ring {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.4);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 0 10px rgba(13, 148, 136, 0);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes heart-beat {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Loading text animation */
+.loading-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0f766e;
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+.loading-text::after {
+  content: '';
+  animation: loading-dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes loading-dots {
+  0%, 20% { content: ''; }
+  40% { content: '.'; }
+  60% { content: '..'; }
+  80%, 100% { content: '...'; }
+}
+
+.loading-subtitle {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.875rem;
+  color: #4b5563;
+  font-weight: 400;
+  opacity: 0.8;
+  animation: fade-in-out 2s ease-in-out infinite;
+}
+
+@keyframes fade-in-out {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Progress bar for loading */
+.progress-bar-container {
+  width: 100%;
+  height: 4px;
+  background: rgba(13, 148, 136, 0.1);
+  border-radius: 2px;
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #0d9488, #14b8a6, #06b6d4);
+  background-size: 200% 100%;
+  border-radius: 2px;
+  animation: progress-loading 2s ease-in-out infinite,
+             gradient-shift 3s ease infinite;
+  width: 70%;
+}
+
+@keyframes progress-loading {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  100% { width: 85%; }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ========== Analysis Result Cards ========== */
+.analysis-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.analysis-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.emergency-alert {
+  background: rgba(239, 68, 68, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  50% { 
+    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+  }
+}
+
+.glassmorphic-badge {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.glassmorphic-separator {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  margin: 20px 0;
+}
+
+/* ========== Vivid Symptom Count Badge ========== */
+.symptom-count-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.15) 0%, rgba(219, 39, 119, 0.25) 100%);
+  border: 2px solid rgba(236, 72, 153, 0.4);
+  box-shadow: 
+    0 4px 16px rgba(236, 72, 153, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  color: #be185d;
+}
+
+.symptom-count-badge:hover {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.25) 0%, rgba(219, 39, 119, 0.35) 100%);
+  border-color: rgba(236, 72, 153, 0.6);
+  box-shadow: 
+    0 6px 20px rgba(236, 72, 153, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+/* ========== Enhanced Selected Symptoms Display ========== */
+.selected-glass {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(16, 185, 129, 0.25) 100%);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  box-shadow: 
+    0 4px 16px rgba(34, 197, 94, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.selected-glass:hover {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.25) 0%, rgba(16, 185, 129, 0.35) 100%);
+  border-color: rgba(34, 197, 94, 0.6);
+  box-shadow: 
+    0 6px 20px rgba(34, 197, 94, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.selected-glass .glassmorphic-text {
+  color: #065f46;
+}
+
+.selected-glass .glassmorphic-badge {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(16, 185, 129, 0.3) 100%);
+  border: 1px solid rgba(34, 197, 94, 0.5);
+  color: #047857;
+  font-weight: 600;
+}
+
+/* ========== Theme Switcher - Elegant Interaction ========== */
+.theme-switcher-button {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Light theme styles */
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.theme-switcher-button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.theme-switcher-icons {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.theme-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-icon.active {
+  opacity: 1;
+  scale: 1;
+  color: #0d9488;
+}
+
+.theme-icon.inactive {
+  opacity: 0.4;
+  scale: 0.8;
+  color: #64748b;
+}
+
+.theme-icon.sun-icon {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.theme-icon.moon-icon {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+/* Animation when switching */
+.theme-switcher-button:active .theme-icon {
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+/* ========== Dark Theme Styles ========== */
+
+/* Dark theme canvas - Night Sky */
+[data-theme="dark"] .symptom-checker-canvas,
+.dark .symptom-checker-canvas {
+  background: linear-gradient(135deg, #121826 0%, #1A2238 100%);
+  /* Add subtle digital noise texture */
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.01) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(120, 119, 198, 0.02) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Dark theme glass container */
+[data-theme="dark"] .glassmorphic-container,
+.dark .glassmorphic-container {
+  background: rgba(26, 34, 56, 0.7);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(100, 200, 255, 0.1);
+}
+
+/* Dark theme glass panels */
+[data-theme="dark"] .glass-panel,
+.dark .glass-panel {
+  background: rgba(26, 34, 56, 0.5);
+  border: 1px solid rgba(100, 200, 255, 0.15);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(100, 200, 255, 0.05);
+}
+
+/* Dark theme typography */
+[data-theme="dark"] .glassmorphic-title,
+.dark .glassmorphic-title {
+  color: #64c4ed;
+}
+
+[data-theme="dark"] .glassmorphic-subtitle,
+.dark .glassmorphic-subtitle {
+  color: #a3c4e0;
+}
+
+[data-theme="dark"] .glassmorphic-text,
+.dark .glassmorphic-text {
+  color: #E5E7EB;
+}
+
+[data-theme="dark"] .glassmorphic-primary,
+.dark .glassmorphic-primary {
+  color: #64c4ed;
+}
+
+[data-theme="dark"] .main-title,
+.dark .main-title {
+  color: #64c4ed;
+}
+
+[data-theme="dark"] .subtitle-text,
+.dark .subtitle-text {
+  color: #E5E7EB;
+}
+
+[data-theme="dark"] .section-header,
+.dark .section-header {
+  color: #a3c4e0;
+}
+
+[data-theme="dark"] .body-text,
+.dark .body-text {
+  color: #E5E7EB;
+}
+
+/* Dark theme theme switcher */
+[data-theme="dark"] .theme-switcher-button,
+.dark .theme-switcher-button {
+  background: rgba(26, 34, 56, 0.8);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(100, 200, 255, 0.1);
+}
+
+[data-theme="dark"] .theme-switcher-button:hover,
+.dark .theme-switcher-button:hover {
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(100, 200, 255, 0.1);
+}
+
+[data-theme="dark"] .theme-icon.active,
+.dark .theme-icon.active {
+  color: #64c4ed;
+}
+
+[data-theme="dark"] .theme-icon.inactive,
+.dark .theme-icon.inactive {
+  color: #475569;
+}
+
+/* Dark theme interactive elements with glow effects */
+[data-theme="dark"] .severity-mild.selected,
+.dark .severity-mild.selected {
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+  box-shadow: 
+    0 4px 16px rgba(34, 197, 94, 0.4),
+    0 0 20px rgba(34, 197, 94, 0.2);
+}
+
+[data-theme="dark"] .severity-moderate.selected,
+.dark .severity-moderate.selected {
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  box-shadow: 
+    0 4px 16px rgba(251, 191, 36, 0.4),
+    0 0 20px rgba(251, 191, 36, 0.2);
+}
+
+[data-theme="dark"] .severity-severe.selected,
+.dark .severity-severe.selected {
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+  box-shadow: 
+    0 4px 16px rgba(239, 68, 68, 0.4),
+    0 0 20px rgba(239, 68, 68, 0.2);
+}
+
+[data-theme="dark"] .symptom-pill.selected,
+.dark .symptom-pill.selected {
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  box-shadow: 
+    0 4px 16px rgba(20, 184, 166, 0.4),
+    0 0 20px rgba(20, 184, 166, 0.2);
+}
+
+[data-theme="dark"] .progress-circle.active,
+.dark .progress-circle.active {
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  box-shadow: 
+    0 4px 16px rgba(20, 184, 166, 0.4),
+    0 0 20px rgba(20, 184, 166, 0.2);
+}
+
+/* Dark theme analysis cards */
+[data-theme="dark"] .analysis-card,
+.dark .analysis-card {
+  background: rgba(26, 34, 56, 0.6);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+}
+
+[data-theme="dark"] .analysis-card:hover,
+.dark .analysis-card:hover {
+  background: rgba(26, 34, 56, 0.8);
+  border-color: rgba(100, 200, 255, 0.3);
+  box-shadow: 0 0 20px rgba(100, 200, 255, 0.1);
+}
+
+/* Dark theme navigation buttons */
+[data-theme="dark"] .nav-button.primary,
+.dark .nav-button.primary {
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  box-shadow: 
+    0 4px 16px rgba(20, 184, 166, 0.4),
+    0 0 20px rgba(20, 184, 166, 0.2);
+}
+
+[data-theme="dark"] .nav-button.secondary,
+.dark .nav-button.secondary {
+  background: rgba(26, 34, 56, 0.7);
+  color: #E5E7EB;
+  border: 1px solid rgba(100, 200, 255, 0.2);
+}
+
+/* Theme transition animation */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ========== Enhanced Basic Information Section ========== */
+
+/* 1. Enhanced Header Design */
+.basic-info-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(13, 148, 136, 0.2);
+}
+
+.header-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.1) 0%, rgba(20, 184, 166, 0.2) 100%);
+  border: 2px solid rgba(13, 148, 136, 0.3);
+  box-shadow: 0 4px 16px rgba(13, 148, 136, 0.2);
+}
+
+.personal-data-icon {
+  width: 28px;
+  height: 28px;
+  color: #0d9488;
+}
+
+.basic-info-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #0d9488;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* 2. Two-column Layout */
+.basic-info-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+  .basic-info-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* 3. Age Input Glassmorphic Card */
+.age-input-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.age-input-card:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.input-card-label {
+  display: block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 12px;
+}
+
+.age-glass-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  color: #334155;
+  transition: all 0.3s ease;
+}
+
+.age-glass-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.8);
+  border-color: #0d9488;
+  box-shadow: 
+    0 0 0 3px rgba(13, 148, 136, 0.1),
+    inset 0 1px 4px rgba(13, 148, 136, 0.1);
+}
+
+.age-glass-input::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+/* 4. Gender Selection Group */
+.gender-selection-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.gender-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.gender-pill {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  padding: 12px 20px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.gender-pill:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(13, 148, 136, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.gender-pill.selected {
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  border-color: #0d9488;
+  color: white;
+  font-weight: 600;
+  box-shadow: 
+    0 4px 16px rgba(13, 148, 136, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.gender-pill.selected:hover {
+  background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 20px rgba(13, 148, 136, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* 5. Symptom Duration Card */
+.duration-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.duration-card:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.duration-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.duration-pill {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  padding: 14px 24px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: left;
+  width: 100%;
+}
+
+.duration-pill:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(13, 148, 136, 0.3);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.duration-pill.selected {
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  border-color: #0d9488;
+  color: white;
+  font-weight: 600;
+  box-shadow: 
+    0 4px 16px rgba(13, 148, 136, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.duration-pill.selected:hover {
+  background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+  transform: translateX(6px);
+  box-shadow: 
+    0 6px 20px rgba(13, 148, 136, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* ========== Dark Theme Variants for Vivid Elements ========== */
+
+/* Dark theme language selector */
+[data-theme="dark"] .language-selector,
+.dark .language-selector {
+  background: linear-gradient(135deg, rgba(139, 69, 255, 0.25) 0%, rgba(168, 85, 247, 0.35) 100%);
+  border: 1px solid rgba(139, 69, 255, 0.6);
+  color: #c084fc;
+  box-shadow: 
+    0 4px 16px rgba(139, 69, 255, 0.4),
+    inset 0 1px 0 rgba(139, 69, 255, 0.2);
+}
+
+[data-theme="dark"] .language-selector:hover,
+.dark .language-selector:hover {
+  background: linear-gradient(135deg, rgba(139, 69, 255, 0.35) 0%, rgba(168, 85, 247, 0.45) 100%);
+  border-color: rgba(139, 69, 255, 0.8);
+  box-shadow: 
+    0 6px 20px rgba(139, 69, 255, 0.5),
+    inset 0 1px 0 rgba(139, 69, 255, 0.2);
+}
+
+/* Dark theme symptom count badge */
+[data-theme="dark"] .symptom-count-badge,
+.dark .symptom-count-badge {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.25) 0%, rgba(219, 39, 119, 0.35) 100%);
+  border: 2px solid rgba(236, 72, 153, 0.6);
+  color: #f472b6;
+  box-shadow: 
+    0 4px 16px rgba(236, 72, 153, 0.4),
+    inset 0 1px 0 rgba(236, 72, 153, 0.2);
+}
+
+[data-theme="dark"] .symptom-count-badge:hover,
+.dark .symptom-count-badge:hover {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.35) 0%, rgba(219, 39, 119, 0.45) 100%);
+  border-color: rgba(236, 72, 153, 0.8);
+  box-shadow: 
+    0 6px 20px rgba(236, 72, 153, 0.5),
+    inset 0 1px 0 rgba(236, 72, 153, 0.2);
+}
+
+/* Dark theme selected symptoms display */
+[data-theme="dark"] .selected-glass,
+.dark .selected-glass {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.25) 0%, rgba(16, 185, 129, 0.35) 100%);
+  border: 1px solid rgba(34, 197, 94, 0.6);
+  box-shadow: 
+    0 4px 16px rgba(34, 197, 94, 0.4),
+    inset 0 1px 0 rgba(34, 197, 94, 0.1);
+}
+
+[data-theme="dark"] .selected-glass:hover,
+.dark .selected-glass:hover {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.35) 0%, rgba(16, 185, 129, 0.45) 100%);
+  border-color: rgba(34, 197, 94, 0.8);
+  box-shadow: 
+    0 6px 20px rgba(34, 197, 94, 0.5),
+    inset 0 1px 0 rgba(34, 197, 94, 0.1);
+}
+
+[data-theme="dark"] .selected-glass .glassmorphic-text,
+.dark .selected-glass .glassmorphic-text {
+  color: #6ee7b7;
+}
+
+[data-theme="dark"] .selected-glass .glassmorphic-badge,
+.dark .selected-glass .glassmorphic-badge {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.3) 0%, rgba(16, 185, 129, 0.4) 100%);
+  border: 1px solid rgba(34, 197, 94, 0.7);
+  color: #34d399;
+}
+
+/* ========== Dark Theme - Enhanced Basic Information ========== */
+
+/* Dark theme header */
+[data-theme="dark"] .basic-info-header,
+.dark .basic-info-header {
+  border-bottom: 1px solid rgba(100, 200, 255, 0.3);
+}
+
+[data-theme="dark"] .header-icon-wrapper,
+.dark .header-icon-wrapper {
+  background: linear-gradient(135deg, rgba(100, 200, 255, 0.15) 0%, rgba(139, 69, 255, 0.25) 100%);
+  border: 2px solid rgba(100, 200, 255, 0.4);
+  box-shadow: 0 4px 16px rgba(100, 200, 255, 0.3);
+}
+
+[data-theme="dark"] .personal-data-icon,
+.dark .personal-data-icon {
+  color: #64c4ed;
+}
+
+[data-theme="dark"] .basic-info-title,
+.dark .basic-info-title {
+  color: #64c4ed;
+}
+
+/* Dark theme age input card */
+[data-theme="dark"] .age-input-card,
+.dark .age-input-card {
+  background: rgba(26, 34, 56, 0.7);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(100, 200, 255, 0.1);
+}
+
+[data-theme="dark"] .age-input-card:hover,
+.dark .age-input-card:hover {
+  background: rgba(26, 34, 56, 0.8);
+  border-color: rgba(100, 200, 255, 0.3);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(100, 200, 255, 0.1);
+}
+
+[data-theme="dark"] .input-card-label,
+.dark .input-card-label {
+  color: #a3c4e0;
+}
+
+[data-theme="dark"] .age-glass-input,
+.dark .age-glass-input {
+  background: rgba(26, 34, 56, 0.6);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  color: #E5E7EB;
+}
+
+[data-theme="dark"] .age-glass-input:focus,
+.dark .age-glass-input:focus {
+  background: rgba(26, 34, 56, 0.8);
+  border-color: #64c4ed;
+  box-shadow: 
+    0 0 0 3px rgba(100, 200, 255, 0.2),
+    inset 0 1px 4px rgba(100, 200, 255, 0.1);
+}
+
+[data-theme="dark"] .age-glass-input::placeholder,
+.dark .age-glass-input::placeholder {
+  color: #64748b;
+}
+
+/* Dark theme gender pills */
+[data-theme="dark"] .gender-pill,
+.dark .gender-pill {
+  background: rgba(26, 34, 56, 0.6);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .gender-pill:hover,
+.dark .gender-pill:hover {
+  background: rgba(26, 34, 56, 0.8);
+  border-color: rgba(100, 200, 255, 0.4);
+}
+
+[data-theme="dark"] .gender-pill.selected,
+.dark .gender-pill.selected {
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  border-color: #14b8a6;
+  color: white;
+  box-shadow: 
+    0 4px 16px rgba(20, 184, 166, 0.4),
+    0 0 20px rgba(20, 184, 166, 0.2);
+}
+
+[data-theme="dark"] .gender-pill.selected:hover,
+.dark .gender-pill.selected:hover {
+  background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+  box-shadow: 
+    0 6px 20px rgba(20, 184, 166, 0.5),
+    0 0 25px rgba(20, 184, 166, 0.3);
+}
+
+/* Dark theme duration card */
+[data-theme="dark"] .duration-card,
+.dark .duration-card {
+  background: rgba(26, 34, 56, 0.7);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(100, 200, 255, 0.1);
+}
+
+[data-theme="dark"] .duration-card:hover,
+.dark .duration-card:hover {
+  background: rgba(26, 34, 56, 0.8);
+  border-color: rgba(100, 200, 255, 0.3);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(100, 200, 255, 0.1);
+}
+
+[data-theme="dark"] .duration-pill,
+.dark .duration-pill {
+  background: rgba(26, 34, 56, 0.6);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .duration-pill:hover,
+.dark .duration-pill:hover {
+  background: rgba(26, 34, 56, 0.8);
+  border-color: rgba(100, 200, 255, 0.4);
+}
+
+[data-theme="dark"] .duration-pill.selected,
+.dark .duration-pill.selected {
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  border-color: #14b8a6;
+  color: white;
+  box-shadow: 
+    0 4px 16px rgba(20, 184, 166, 0.4),
+    0 0 20px rgba(20, 184, 166, 0.2);
+}
+
+[data-theme="dark"] .duration-pill.selected:hover,
+.dark .duration-pill.selected:hover {
+  background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+  box-shadow: 
+    0 6px 20px rgba(20, 184, 166, 0.5),
+    0 0 25px rgba(20, 184, 166, 0.3);
+}
+
+/* ========== Enhanced Symptom Assessment Cards ========== */
+
+.symptom-assessment-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* 1. Symptom Assessment Card */
+.symptom-assessment-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.symptom-assessment-card:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* 2. Severity Indicator Bar */
+.severity-indicator-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+  opacity: 0.8;
+  animation: pulse-indicator 2s infinite ease-in-out;
+}
+
+@keyframes pulse-indicator {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* 3. Card Header with Icon and Title */
+.symptom-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.symptom-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.1) 0%, rgba(20, 184, 166, 0.2) 100%);
+  border: 1px solid rgba(13, 148, 136, 0.2);
+}
+
+.symptom-card-icon {
+  width: 24px;
+  height: 24px;
+  color: #0d9488;
+}
+
+.symptom-card-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #334155;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* 4. Severity Slider Container */
+.severity-slider-container {
+  margin-bottom: 20px;
+}
+
+.severity-slider-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.severity-slider-wrapper {
+  position: relative;
+  padding: 0 16px;
+}
+
+.severity-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.severity-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #0d9488;
+  cursor: pointer;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    0 0 0 3px rgba(13, 148, 136, 0.2),
+    inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.severity-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    0 0 0 6px rgba(13, 148, 136, 0.2);
+}
+
+.severity-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #0d9488;
+  cursor: pointer;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    0 0 0 3px rgba(13, 148, 136, 0.2),
+    inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.severity-slider-marks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding: 0 12px;
+}
+
+.slider-mark {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #64748b;
+  text-align: center;
+}
+
+.slider-mark.mild { color: #22c55e; }
+.slider-mark.moderate { color: #f59e0b; }
+.slider-mark.severe { color: #ef4444; }
+
+/* 5. Add Details Toggle */
+.add-details-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #64748b;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 0;
+  transition: all 0.2s ease;
+  margin-left: auto;
+  width: fit-content;
+}
+
+.add-details-toggle:hover {
+  color: #0d9488;
+}
+
+.details-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.details-icon.expanded {
+  transform: rotate(45deg);
+}
+
+/* 6. Expandable Details Section */
+.symptom-details-container {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  animation: expand-details 0.3s ease-out;
+}
+
+@keyframes expand-details {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.symptom-details-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  color: #334155;
+  resize: vertical;
+  min-height: 80px;
+  transition: all 0.3s ease;
+}
+
+.symptom-details-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.8);
+  border-color: #0d9488;
+  box-shadow: 
+    0 0 0 3px rgba(13, 148, 136, 0.1),
+    inset 0 1px 4px rgba(13, 148, 136, 0.1);
+}
+
+.symptom-details-input::placeholder {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+/* 7. Additional Notes Section */
+.additional-notes-section {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 32px;
+}
+
+/* ========== Dark Theme - Symptom Assessment Cards ========== */
+
+/* Dark theme symptom assessment cards */
+[data-theme="dark"] .symptom-assessment-card,
+.dark .symptom-assessment-card {
+  background: rgba(26, 34, 56, 0.7);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(100, 200, 255, 0.1);
+}
+
+[data-theme="dark"] .symptom-assessment-card:hover,
+.dark .symptom-assessment-card:hover {
+  background: rgba(26, 34, 56, 0.8);
+  border-color: rgba(100, 200, 255, 0.3);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(100, 200, 255, 0.1);
+}
+
+[data-theme="dark"] .symptom-icon-wrapper,
+.dark .symptom-icon-wrapper {
+  background: linear-gradient(135deg, rgba(100, 200, 255, 0.15) 0%, rgba(139, 69, 255, 0.25) 100%);
+  border: 1px solid rgba(100, 200, 255, 0.3);
+}
+
+[data-theme="dark"] .symptom-card-icon,
+.dark .symptom-card-icon {
+  color: #64c4ed;
+}
+
+[data-theme="dark"] .symptom-card-title,
+.dark .symptom-card-title {
+  color: #E5E7EB;
+}
+
+[data-theme="dark"] .severity-slider-label,
+.dark .severity-slider-label {
+  color: #a3c4e0;
+}
+
+[data-theme="dark"] .severity-slider::-webkit-slider-thumb,
+.dark .severity-slider::-webkit-slider-thumb {
+  border-color: #64c4ed;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.4),
+    0 0 0 3px rgba(100, 200, 255, 0.2);
+}
+
+[data-theme="dark"] .severity-slider::-webkit-slider-thumb:hover,
+.dark .severity-slider::-webkit-slider-thumb:hover {
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    0 0 0 6px rgba(100, 200, 255, 0.3);
+}
+
+[data-theme="dark"] .severity-slider::-moz-range-thumb,
+.dark .severity-slider::-moz-range-thumb {
+  border-color: #64c4ed;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.4),
+    0 0 0 3px rgba(100, 200, 255, 0.2);
+}
+
+[data-theme="dark"] .add-details-toggle,
+.dark .add-details-toggle {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .add-details-toggle:hover,
+.dark .add-details-toggle:hover {
+  color: #64c4ed;
+}
+
+[data-theme="dark"] .symptom-details-container,
+.dark .symptom-details-container {
+  border-top-color: rgba(100, 200, 255, 0.2);
+}
+
+[data-theme="dark"] .symptom-details-input,
+.dark .symptom-details-input {
+  background: rgba(26, 34, 56, 0.6);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  color: #E5E7EB;
+}
+
+[data-theme="dark"] .symptom-details-input:focus,
+.dark .symptom-details-input:focus {
+  background: rgba(26, 34, 56, 0.8);
+  border-color: #64c4ed;
+  box-shadow: 
+    0 0 0 3px rgba(100, 200, 255, 0.2),
+    inset 0 1px 4px rgba(100, 200, 255, 0.1);
+}
+
+[data-theme="dark"] .symptom-details-input::placeholder,
+.dark .symptom-details-input::placeholder {
+  color: #64748b;
+}
+
+[data-theme="dark"] .additional-notes-section,
+.dark .additional-notes-section {
+  background: rgba(26, 34, 56, 0.5);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+}
+
+/* ===== REVIEW SCREEN COMPONENTS ===== */
+
+/* Review Cards */
+.review-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.review-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Review Edit Button */
+.review-edit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.review-edit-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Review Symptom Pills */
+.review-symptom-pill {
+  padding: 16px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.review-symptom-pill::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  transition: all 0.3s ease;
+}
+
+/* Severity Colors */
+.review-symptom-pill.severity-mild {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.25);
+  backdrop-filter: blur(20px);
+}
+
+.review-symptom-pill.severity-mild::before {
+  background: linear-gradient(180deg, #10b981, #06d6a0);
+}
+
+.review-symptom-pill.severity-moderate {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.25);
+  backdrop-filter: blur(20px);
+}
+
+.review-symptom-pill.severity-moderate::before {
+  background: linear-gradient(180deg, #f59e0b, #ff8c00);
+}
+
+.review-symptom-pill.severity-severe {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.25);
+  backdrop-filter: blur(20px);
+}
+
+.review-symptom-pill.severity-severe::before {
+  background: linear-gradient(180deg, #ef4444, #ff1744);
+}
+
+/* Symptom Content */
+.symptom-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.symptom-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: rgba(30, 41, 59, 0.9);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.symptom-severity {
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: capitalize;
+  padding: 4px 12px;
+  border-radius: 8px;
+  margin-top: 4px;
+  display: inline-block;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Severity-specific gradient backgrounds - Vibrant and Fashionable */
+.review-symptom-pill.severity-mild .symptom-severity {
+  background: linear-gradient(135deg, #10b981, #06d6a0, #00bcd4);
+  color: white;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.review-symptom-pill.severity-moderate .symptom-severity {
+  background: linear-gradient(135deg, #f59e0b, #ff8c00, #ff6b35);
+  color: white;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+}
+
+.review-symptom-pill.severity-severe .symptom-severity {
+  background: linear-gradient(135deg, #ef4444, #ff1744, #e91e63);
+  color: white;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+
+/* Analyze Symptoms Button */
+.analyze-symptoms-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 18px 24px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #0891b2, #0e7490, #155e75);
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  
+  /* Pulsating glow effect */
+  box-shadow: 
+    0 0 0 0 rgba(8, 145, 178, 0.4),
+    0 8px 32px rgba(8, 145, 178, 0.2);
+  animation: pulse-glow 2s infinite;
+}
+
+.analyze-symptoms-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.analyze-symptoms-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 0 0 rgba(8, 145, 178, 0.6),
+    0 12px 40px rgba(8, 145, 178, 0.3);
+  background: linear-gradient(135deg, #0ea5e9, #0891b2, #0e7490);
+}
+
+.analyze-symptoms-button:hover::before {
+  left: 100%;
+}
+
+.analyze-symptoms-button:active {
+  transform: translateY(0);
+  transition: transform 0.1s ease;
+}
+
+.analyze-symptoms-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  animation: none;
+  transform: none;
+  box-shadow: 0 4px 16px rgba(8, 145, 178, 0.1);
+}
+
+/* Pulsating glow animation */
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 
+      0 0 0 0 rgba(8, 145, 178, 0.4),
+      0 8px 32px rgba(8, 145, 178, 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 8px rgba(8, 145, 178, 0.1),
+      0 8px 32px rgba(8, 145, 178, 0.3);
+  }
+  100% {
+    box-shadow: 
+      0 0 0 0 rgba(8, 145, 178, 0.4),
+      0 8px 32px rgba(8, 145, 178, 0.2);
+  }
+}
+
+/* Dark theme variants for review components */
+.dark .review-card {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(148, 163, 184, 0.1);
+}
+
+.dark .review-card:hover {
+  background: rgba(30, 41, 59, 0.9);
+  border-color: rgba(148, 163, 184, 0.2);
+}
+
+.dark .review-edit-button {
+  background: rgba(51, 65, 85, 0.6);
+  border-color: rgba(148, 163, 184, 0.1);
+}
+
+.dark .review-edit-button:hover {
+  background: rgba(51, 65, 85, 0.8);
+  border-color: rgba(148, 163, 184, 0.2);
+}
+
+.dark .review-symptom-pill.severity-mild {
+  background: rgba(5, 150, 105, 0.15);
+  border-color: rgba(5, 150, 105, 0.3);
+}
+
+.dark .review-symptom-pill.severity-moderate {
+  background: rgba(217, 119, 6, 0.15);
+  border-color: rgba(217, 119, 6, 0.3);
+}
+
+.dark .review-symptom-pill.severity-severe {
+  background: rgba(220, 38, 38, 0.15);
+  border-color: rgba(220, 38, 38, 0.3);
+}
+
+.dark .symptom-name {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.dark .symptom-severity {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Dark theme severity gradients - Enhanced and vibrant */
+.dark .review-symptom-pill.severity-mild .symptom-severity {
+  background: linear-gradient(135deg, #059669, #047857, #0891b2);
+  color: white;
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.4);
+}
+
+.dark .review-symptom-pill.severity-moderate .symptom-severity {
+  background: linear-gradient(135deg, #d97706, #ea580c, #dc2626);
+  color: white;
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.4);
+}
+
+.dark .review-symptom-pill.severity-severe .symptom-severity {
+  background: linear-gradient(135deg, #dc2626, #be185d, #9333ea);
+  color: white;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.4);
+}
+
+/* ===== END REVIEW SCREEN COMPONENTS ===== */
